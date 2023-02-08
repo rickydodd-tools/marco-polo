@@ -2,11 +2,33 @@
 # shellcheck shell=bash
 
 marco () {
-    pwd=$(pwd)
+    pwd > ~/.config/marco/marco_pwd
 }
 
 polo () {
-    cd "$pwd" || return 2
-}
+    # if marco file does not exist, then return an error
+    [ -f ~/.config/marco/marco_pwd ]
+    err=$?
 
-return
+    if [ $err != 0 ]; then
+        echo "No polo! Marco file does not exist. Call marco in a directory to create a marco file."
+        return $err
+    fi
+
+    # if the directory, denoted by the path stored in
+    # ~/.config/marco/marco_pwd, does not exist, then return an error
+    [ -d "$(cat ~/.config/marco/marco_pwd 2> /dev/null)" ]
+    err=$?
+
+    if [ $err != 0 ]; then
+        echo "No polo! Marco'd directory does not exist anymore. Call marco in another directory to mark it."
+        return $?
+    fi
+
+    # change directory to marco'd directory
+    # if changing directory fails, then return the error
+    cd "$(cat ~/.config/marco/marco_pwd 2> /dev/null)" || return $?
+
+    # return success
+    return
+}
