@@ -1,0 +1,8 @@
+#!/bin/env bash
+marco () {
+    pwd=$(pwd)
+}
+
+polo () {
+    cd "$pwd" || exit
+}
