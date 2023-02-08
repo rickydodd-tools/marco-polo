@@ -1,8 +1,12 @@
-#!/bin/env bash
+#!/bin/false
+# shellcheck shell=bash
+
 marco () {
     pwd=$(pwd)
 }
 
 polo () {
-    cd "$pwd" || exit
+    cd "$pwd" || return 2
 }
+
+return
