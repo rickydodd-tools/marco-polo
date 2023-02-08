@@ -2,14 +2,42 @@
 
 # Marco, Polo!
 ## Brief
-Simple bash script that lets you mark a working directory, traverse anywhere else during the same shell session, and then jump back to the marked directory with a single command.
+Bash script that lets you mark a directory, using `marco`, and then return to that directory at any time (assuming the user has not overwritten the desired marco) with `polo`.
 
-## How to Use
-- In the directory you want to mark, execute:
+## Installation
+1. Create the local user configuration directory.
+   ```bash
+     mkdir ~/.config/marco
+   ```
+
+2. Create the local user binary directory.
+   ```bash
+     mkdir ~/bin
+   ```
+
+3. Clone the contents of the marco-polo repository to the local user binary directory.
+   ```bash
+     git clone --depth=1 https://github.com/rickydodd/marco-polo ~/bin/
+   ```
+
+4. Remove the `.git` and `readme.md` artefacts.
+   ```bash
+     rm -rf ~/bin/{.git,.github,readme.md}
+   ```
+
+5. Set marco to be sourced with every new bash instance.
+   ```bash
+     echo -e "source ~/bin/marco\n" >> ~/.bashrc
+   ```
+
+You can restart your terminal emulator or run the command `source ~/bin/marco`.
+
+## Usage
+- In a directory you want to mark, run the following command.
   ```bash
-  marco
+    marco
   ```
-- At any other time, while in the same shell session, return to the marked directory via:
+- When you want to return to the marked directory, then run the following command.
   ```bash
-  polo
+    polo
   ```
