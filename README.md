@@ -1,4 +1,4 @@
-![shellcheck workflow](https://github.com/rickydodd/marco-polo/actions/workflows/push-actions.yml/badge.svg)
+![shellcheck workflow](https://github.com/rickydodd-tools/marco-polo/actions/workflows/push-actions.yml/badge.svg)
 
 # Marco, Polo!
 ## Brief
